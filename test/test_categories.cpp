@@ -26,3 +26,11 @@ TEST(categories, regularGetPriceIsCorrect) {
     EXPECT_EQ(3.5, category.getPrice(3));
     EXPECT_EQ(5, category.getPrice(4));
 }
+
+TEST(categories, normalFrequentRenterPointsIsCorrect) {
+    Category children = Children::INSTANCE;
+
+    // This is a bit weird, but it's how it was defined
+    EXPECT_EQ(1, children.getFrequentRenterPoints(0));
+    EXPECT_EQ(1, children.getFrequentRenterPoints(10));
+}
