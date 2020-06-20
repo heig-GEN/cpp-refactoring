@@ -12,27 +12,25 @@ public:
     static const int REGULAR = 0;
     static const int NEW_RELEASE = 1;
 
-    Movie(const std::string& title, int priceCode = REGULAR);
+    Movie(const std::string& title, Category* category = &Regular::INSTANCE);
 
     unsigned getFrequentRenterPoints(int days) const;
 
     double getPrice(int days) const;
 
-    int getPriceCode() const;
+    Category* getPriceCode() const;
 
-    void setPriceCode(int arg);
+    void setPriceCode(Category* category);
 
     std::string getTitle() const;
 
 private:
     Category* _category;
     std::string _title;
-    int _priceCode;
 };
 
-inline Movie::Movie(const std::string& title, int priceCode)
-        : _title(title), _priceCode(priceCode), _category(nullptr) {
-    setPriceCode(priceCode);
+inline Movie::Movie(const std::string& title, Category* category)
+        : _title(title), _category(category) {
 }
 
 inline unsigned Movie::getFrequentRenterPoints(int days) const {
@@ -43,24 +41,12 @@ inline double Movie::getPrice(int days) const {
     return _category->getPrice(days);
 }
 
-inline int Movie::getPriceCode() const {
-    return _priceCode;
+inline Category* Movie::getPriceCode() const {
+    return _category;
 }
 
-inline void Movie::setPriceCode(int arg) {
-    _priceCode = arg;
-
-    switch (arg) {
-        case Movie::REGULAR:
-            this->_category = &Regular::INSTANCE;
-            break;
-        case Movie::NEW_RELEASE:
-            this->_category = &NewRelease::INSTANCE;
-            break;
-        case Movie::CHILDREN:
-            this->_category = &Children::INSTANCE;
-            break;
-    }
+inline void Movie::setPriceCode(Category* category) {
+    this->_category = category;
 }
 
 inline std::string Movie::getTitle() const {
