@@ -29,8 +29,10 @@ TEST(categories, regularGetPriceIsCorrect) {
 
 TEST(categories, normalFrequentRenterPointsIsCorrect) {
     Category children = Children::INSTANCE;
+    Category regular = Regular::INSTANCE;
 
     // This is a bit weird, but it's how it was defined
     EXPECT_EQ(1, children.getFrequentRenterPoints(0));
     EXPECT_EQ(1, children.getFrequentRenterPoints(10));
+    EXPECT_EQ(regular.getFrequentRenterPoints(10), children.getFrequentRenterPoints(10));
 }
