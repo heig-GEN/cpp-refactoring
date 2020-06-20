@@ -19,10 +19,15 @@ public:
 private:
     Movie _movie;
     int _daysRented;
+    // Use a field so that we can call getPrice() w/o overhead
+    double _price;
 };
 
 inline Rental::Rental(const Movie& movie, int daysRented)
-        : _movie(movie), _daysRented(daysRented) {}
+        : _movie(movie),
+        _daysRented(daysRented),
+        _price(_movie.getPrice(_daysRented))
+        {}
 
 inline int Rental::getDaysRented() const { return _daysRented; }
 
@@ -31,7 +36,7 @@ inline unsigned Rental::getFrequentRenterPoints() const {
 }
 
 inline double Rental::getPrice() const {
-    return getMovie().getPrice(getDaysRented());
+    return _price;
 }
 
 inline const Movie& Rental::getMovie() const { return _movie; }

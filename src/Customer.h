@@ -4,6 +4,8 @@
 
 #include <string>
 #include <vector>
+#include <functional>
+
 #include "Rental.h"
 
 class Customer {
@@ -21,6 +23,12 @@ public:
 private:
     std::string _name;
     std::vector<Rental> _rentals;
+
+    void prepareStatement(
+            double* amount,
+            unsigned* frequentPoints,
+            std::function<void (Rental& rental)> const lambda
+    ) const;
 };
 
 inline Customer::Customer() {}
