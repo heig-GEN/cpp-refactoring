@@ -1,6 +1,5 @@
 add_executable(
         unit_tests
-        test_example.cpp
         test_integration.cpp
 )
 
