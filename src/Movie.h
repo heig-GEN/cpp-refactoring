@@ -4,6 +4,8 @@
 
 #include <string>
 
+#include "Category.h"
+
 class Movie {
 public:
     static const int CHILDREN = 2;
@@ -19,13 +21,15 @@ public:
     std::string getTitle() const;
 
 private:
+    Category* _category;
     std::string _title;
     int _priceCode;
 };
 
-inline Movie::
-Movie(const std::string& title, int priceCode) : _title(title),
-                                                 _priceCode(priceCode) {}
+inline Movie::Movie(const std::string& title, int priceCode)
+        : _title(title), _priceCode(priceCode), _category(nullptr) {
+    setPriceCode(priceCode);
+}
 
 inline int Movie::getPriceCode() const {
     return _priceCode;
@@ -33,6 +37,18 @@ inline int Movie::getPriceCode() const {
 
 inline void Movie::setPriceCode(int arg) {
     _priceCode = arg;
+
+    switch (arg) {
+        case Movie::REGULAR:
+            this->_category = new Regular();
+            break;
+        case Movie::NEW_RELEASE:
+            this->_category = new NewRelease();
+            break;
+        case Movie::CHILDREN:
+            this->_category = new Children();
+            break;
+    }
 }
 
 inline std::string Movie::getTitle() const {
