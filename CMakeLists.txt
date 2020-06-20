@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
-project(heig_POO2_labo03)
+project(heig_GEN_labo05)
 
 # place binaries and libraries according to GNU standards
 include(GNUInstallDirs)

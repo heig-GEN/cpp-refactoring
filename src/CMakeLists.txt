@@ -1,5 +1,5 @@
 add_library(
-        example
+        mainSources
         ""
         example.h
         Customer.h
@@ -8,7 +8,7 @@ add_library(
 )
 
 target_sources(
-        example
+        mainSources
         PRIVATE
         example.cpp
         Customer.cpp
@@ -22,7 +22,7 @@ target_sources(
 )
 
 target_include_directories(
-        example
+        mainSources
         PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}
 )
@@ -34,5 +34,5 @@ add_executable(
 
 target_link_libraries(
         program
-        example
+        mainSources
 )
