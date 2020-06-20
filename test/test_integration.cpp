@@ -23,7 +23,7 @@ TEST(integration, statementRemainsIdentical) {
             Movie("Avengers: Endgame", Movie::NEW_RELEASE), 5)
     );
     customer.addRental(Rental(
-            Movie("Snow White", Movie::CHILDRENS), 3)
+            Movie("Snow White", Movie::CHILDREN), 3)
     );
 
     stream << customer.statement();
