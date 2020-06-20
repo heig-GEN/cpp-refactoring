@@ -8,6 +8,8 @@ public:
 };
 
 class Children : public Category {
+public:
+    static Children INSTANCE;
     double getPrice(unsigned int days) const override {
         double price = 1.5;
         if (days > 3)
@@ -17,12 +19,16 @@ class Children : public Category {
 };
 
 class NewRelease : public Category {
+public:
+    static NewRelease INSTANCE;
     double getPrice(unsigned int days) const override {
         return days * 3;
     }
 };
 
 class Regular : public Category {
+public:
+    static Regular INSTANCE;
     double getPrice(unsigned int days) const override {
         double price = 2;
         if (days > 2)

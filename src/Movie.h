@@ -40,13 +40,13 @@ inline void Movie::setPriceCode(int arg) {
 
     switch (arg) {
         case Movie::REGULAR:
-            this->_category = new Regular();
+            this->_category = &Regular::INSTANCE;
             break;
         case Movie::NEW_RELEASE:
-            this->_category = new NewRelease();
+            this->_category = &NewRelease::INSTANCE;
             break;
         case Movie::CHILDREN:
-            this->_category = new Children();
+            this->_category = &Children::INSTANCE;
             break;
     }
 }
