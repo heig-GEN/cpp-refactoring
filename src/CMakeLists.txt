@@ -12,7 +12,6 @@ target_sources(
         PRIVATE
         Category.cpp
         Customer.cpp
-        Movie.cpp
         main.cpp
         PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/Category.h
