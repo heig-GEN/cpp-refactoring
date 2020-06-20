@@ -16,25 +16,8 @@ string Customer::statement() {
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
     for (; iter != iter_end; ++iter) {
-        double thisAmount = 0;
         Rental each = *iter;
-
-        // determine amounts for each line
-        switch (each.getMovie().getPriceCode()) {
-            case Movie::REGULAR:
-                thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie::NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
-                break;
-            case Movie::CHILDREN:
-                thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
-                break;
-        }
+        double thisAmount = each.getPrice();
 
         // add frequent renter points
         frequentRenterPoints += each.getFrequentRenterPoints();
