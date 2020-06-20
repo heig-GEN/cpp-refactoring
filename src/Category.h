@@ -3,8 +3,26 @@
 #define CATEGORY_H
 
 class Category {
+
+private:
+    double _basePrice;
+    double _dailyPrice;
+
+    unsigned _daysCount;
+protected:
+
+    explicit Category(double basePrice, double dailyPrice, unsigned daysCount)
+            : _basePrice(basePrice), _dailyPrice(dailyPrice),
+              _daysCount(daysCount) {}
+
 public:
-    virtual double getPrice(unsigned days) const = 0;
+    double getPrice(unsigned days) const {
+        double price = _basePrice;
+        if (days > _daysCount) {
+            price += (days - _daysCount) * _dailyPrice;
+        }
+        return price;
+    }
 
     virtual unsigned getFrequentRenterPoints(unsigned days) const {
         return 1;
@@ -15,21 +33,14 @@ class Children : public Category {
 public:
     static Children INSTANCE;
 
-    double getPrice(unsigned int days) const override {
-        double price = 1.5;
-        if (days > 3)
-            price += (days - 3) * 1.5;
-        return price;
-    }
+    Children() : Category(1.5, 1.5, 3) {}
 };
 
 class NewRelease : public Category {
 public:
     static NewRelease INSTANCE;
 
-    double getPrice(unsigned int days) const override {
-        return days * 3;
-    }
+    NewRelease() : Category(0, 3, 0) {}
 
     unsigned getFrequentRenterPoints(unsigned int days) const override {
         unsigned points = Category::getFrequentRenterPoints(days);
@@ -41,12 +52,7 @@ class Regular : public Category {
 public:
     static Regular INSTANCE;
 
-    double getPrice(unsigned int days) const override {
-        double price = 2;
-        if (days > 2)
-            price += (days - 2) * 1.5;
-        return price;
-    }
+    Regular() : Category(2, 1.5, 2) {}
 };
 
 #endif // CATEGORY_H
