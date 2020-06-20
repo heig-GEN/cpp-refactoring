@@ -10,7 +10,7 @@ public:
 
     int getDaysRented() const;
 
-    int getFrequentRenterPoints() const;
+    unsigned getFrequentRenterPoints() const;
 
     double getPrice() const;
 
@@ -26,11 +26,8 @@ inline Rental::Rental(const Movie& movie, int daysRented)
 
 inline int Rental::getDaysRented() const { return _daysRented; }
 
-inline int Rental::getFrequentRenterPoints() const {
-    if (getMovie().getPriceCode() == Movie::NEW_RELEASE && getDaysRented() > 1)
-        return 2;
-    else
-        return 1;
+inline unsigned Rental::getFrequentRenterPoints() const {
+    return getMovie().getFrequentRenterPoints(getDaysRented());
 }
 
 inline double Rental::getPrice() const {

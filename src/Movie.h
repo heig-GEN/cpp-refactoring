@@ -14,6 +14,8 @@ public:
 
     Movie(const std::string& title, int priceCode = REGULAR);
 
+    unsigned getFrequentRenterPoints(int days) const;
+
     double getPrice(int days) const;
 
     int getPriceCode() const;
@@ -31,6 +33,10 @@ private:
 inline Movie::Movie(const std::string& title, int priceCode)
         : _title(title), _priceCode(priceCode), _category(nullptr) {
     setPriceCode(priceCode);
+}
+
+inline unsigned Movie::getFrequentRenterPoints(int days) const {
+    return _category->getFrequentRenterPoints(days);
 }
 
 inline double Movie::getPrice(int days) const {
