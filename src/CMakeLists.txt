@@ -26,3 +26,13 @@ target_include_directories(
         PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}
 )
+
+add_executable(
+        program
+        main.cpp
+)
+
+target_link_libraries(
+        program
+        example
+)
