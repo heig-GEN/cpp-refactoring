@@ -11,19 +11,16 @@ using namespace std;
 string Customer::statement() {
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    vector<Rental>::iterator iter = _rentals.begin();
-    vector<Rental>::iterator iter_end = _rentals.end();
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
-    for (; iter != iter_end; ++iter) {
-        Rental each = *iter;
-        double thisAmount = each.getPrice();
+    for(const Rental& rental : _rentals) {
+        double thisAmount = rental.getPrice();
 
         // add frequent renter points
-        frequentRenterPoints += each.getFrequentRenterPoints();
+        frequentRenterPoints += rental.getFrequentRenterPoints();
 
         // show figures for this rental
-        result << "\t" << each.getMovie().getTitle() << "\t"
+        result << "\t" << rental.getMovie().getTitle() << "\t"
                << thisAmount << "\n";
         totalAmount += thisAmount;
     }
