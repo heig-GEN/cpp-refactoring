@@ -14,6 +14,8 @@ public:
 
     Movie(const std::string& title, int priceCode = REGULAR);
 
+    double getPrice(int days) const;
+
     int getPriceCode() const;
 
     void setPriceCode(int arg);
@@ -29,6 +31,10 @@ private:
 inline Movie::Movie(const std::string& title, int priceCode)
         : _title(title), _priceCode(priceCode), _category(nullptr) {
     setPriceCode(priceCode);
+}
+
+inline double Movie::getPrice(int days) const {
+    return _category->getPrice(days);
 }
 
 inline int Movie::getPriceCode() const {
