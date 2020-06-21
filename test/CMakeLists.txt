@@ -2,6 +2,7 @@ add_executable(
         unit_tests
         test_integration.cpp
         test_categories.cpp
+        test_movies.cpp
 )
 
 target_link_libraries(
