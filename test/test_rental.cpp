@@ -9,7 +9,7 @@ using ::testing::AtLeast;
 
 TEST(rental, getPriceIsCorrect) {
     int value = 10;
-    unsigned days = 10;
+    int days = 10;
     MockCategory category;
 
     EXPECT_CALL(category, getPrice)
@@ -26,3 +26,10 @@ TEST(rental, getPriceIsCorrect) {
     EXPECT_EQ(value, rental.getPrice());
 }
 
+TEST(rental, getDaysRentedIsCorrect) {
+    Movie movie("salut");
+    int days = 10;
+
+    Rental rental(&movie, days);
+    ASSERT_EQ(days, rental.getDaysRented());
+}
