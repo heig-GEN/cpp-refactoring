@@ -14,19 +14,6 @@ string Customer::statement() {
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
 
-    /*
-    for(const Rental& rental : _rentals) {
-        // add frequent renter points
-        frequentRenterPoints += rental.getFrequentRenterPoints();
-        // add amount
-        totalAmount += rental.getPrice();
-
-        // show figures for this rental
-        result << "\t" << rental.getMovie().getTitle() << "\t"
-               << rental.getPrice() << "\n";
-    }
-     */
-
     prepareStatement(&totalAmount, &frequentRenterPoints, [&](Rental& rental) {
         result
         << "\t" << rental.getMovie().getTitle()
