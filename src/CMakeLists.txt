@@ -5,6 +5,7 @@ add_library(
         Customer.h
         Movie.h
         Rental.h
+        testing/Category_test.h
 )
 
 target_sources(

@@ -16,7 +16,7 @@ protected:
               _daysCount(daysCount) {}
 
 public:
-    double getPrice(unsigned days) const {
+    virtual double getPrice(unsigned days) const {
         double price = _basePrice;
         if (days > _daysCount) {
             price += (days - _daysCount) * _dailyPrice;
