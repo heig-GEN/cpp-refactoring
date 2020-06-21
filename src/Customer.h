@@ -27,7 +27,7 @@ private:
     void prepareStatement(
             double* amount,
             unsigned* frequentPoints,
-            std::function<void (Rental& rental)> const lambda
+            std::function<void (Rental& rental)> const& lambda
     ) const;
 };
 

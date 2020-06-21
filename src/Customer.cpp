@@ -30,7 +30,7 @@ string Customer::statement() {
 void Customer::prepareStatement(
         double* amount,
         unsigned int* frequentPoints,
-        std::function<void (Rental& rental)> lambda
+        const std::function<void (Rental& rental)>& lambda
 ) const {
     for (Rental rental : _rentals) {
         *frequentPoints += rental.getFrequentRenterPoints();
