@@ -8,25 +8,22 @@ class Rental {
 public:
     Rental(const Movie& movie, int daysRented);
 
-    int getDaysRented() const;
+    virtual int getDaysRented() const;
 
-    unsigned getFrequentRenterPoints() const;
+    virtual unsigned getFrequentRenterPoints() const;
 
-    double getPrice() const;
+    virtual double getPrice() const;
 
-    const Movie& getMovie() const;
+    virtual const Movie& getMovie() const;
 
 private:
     Movie _movie;
     int _daysRented;
-    // Use a field so that we can call getPrice() w/o overhead
-    double _price;
 };
 
 inline Rental::Rental(const Movie& movie, int daysRented)
         : _movie(movie),
-        _daysRented(daysRented),
-        _price(_movie.getPrice(_daysRented))
+        _daysRented(daysRented)
         {}
 
 inline int Rental::getDaysRented() const { return _daysRented; }
@@ -36,7 +33,7 @@ inline unsigned Rental::getFrequentRenterPoints() const {
 }
 
 inline double Rental::getPrice() const {
-    return _price;
+    return _movie.getPrice(_daysRented);
 }
 
 inline const Movie& Rental::getMovie() const { return _movie; }
