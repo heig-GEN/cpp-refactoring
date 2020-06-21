@@ -6,6 +6,7 @@ add_library(
         Movie.h
         Rental.h
         testing/Category_test.h
+        testing/Movie_test.h
 )
 
 target_sources(

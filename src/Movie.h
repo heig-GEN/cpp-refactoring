@@ -10,13 +10,13 @@ class Movie {
 public:
     Movie(const std::string& title, Category* category = &Regular::INSTANCE);
 
-    unsigned getFrequentRenterPoints(int days) const;
+    virtual unsigned getFrequentRenterPoints(int days) const;
 
-    double getPrice(int days) const;
+    virtual double getPrice(int days) const;
 
-    void setCategory(Category* category);
+    virtual void setCategory(Category* category);
 
-    std::string getTitle() const;
+    virtual std::string getTitle() const;
 
 private:
     Category* _category;

@@ -13,16 +13,14 @@ TEST(integration, statementRemainsIdentical) {
             .append("Amount owed is 26\n")
             .append("You earned 4 frequent renter points");
 
+    Movie karate("Karate Kid");
+    Movie avengers("Avengers: Endgame", &NewRelease::INSTANCE);
+    Movie snow("Snow White", &Children::INSTANCE);
+
     Customer customer("Olivier");
-    customer.addRental(Rental(
-            Movie("Karate Kid"), 7)
-    );
-    customer.addRental(Rental(
-            Movie("Avengers: Endgame", &NewRelease::INSTANCE), 5)
-    );
-    customer.addRental(Rental(
-            Movie("Snow White", &Children::INSTANCE), 3)
-    );
+    customer.addRental(Rental(&karate, 7));
+    customer.addRental(Rental(&avengers, 5));
+    customer.addRental(Rental(&snow, 3));
 
     stream << customer.statement();
 

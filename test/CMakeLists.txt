@@ -3,6 +3,7 @@ add_executable(
         test_integration.cpp
         test_categories.cpp
         test_movies.cpp
+        test_rental.cpp
 )
 
 target_link_libraries(

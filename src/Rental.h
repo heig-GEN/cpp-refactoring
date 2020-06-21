@@ -6,7 +6,7 @@
 
 class Rental {
 public:
-    Rental(const Movie& movie, int daysRented);
+    Rental(const Movie* movie, int daysRented);
 
     virtual int getDaysRented() const;
 
@@ -17,11 +17,11 @@ public:
     virtual const Movie& getMovie() const;
 
 private:
-    Movie _movie;
+    const Movie* _movie;
     int _daysRented;
 };
 
-inline Rental::Rental(const Movie& movie, int daysRented)
+inline Rental::Rental(const Movie* movie, int daysRented)
         : _movie(movie),
         _daysRented(daysRented)
         {}
@@ -33,9 +33,9 @@ inline unsigned Rental::getFrequentRenterPoints() const {
 }
 
 inline double Rental::getPrice() const {
-    return _movie.getPrice(_daysRented);
+    return _movie->getPrice(_daysRented);
 }
 
-inline const Movie& Rental::getMovie() const { return _movie; }
+inline const Movie& Rental::getMovie() const { return *_movie; }
 
 #endif // RENTAL_H
