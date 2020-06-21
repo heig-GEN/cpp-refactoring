@@ -33,3 +33,22 @@ TEST(rental, getDaysRentedIsCorrect) {
     Rental rental(&movie, days);
     ASSERT_EQ(days, rental.getDaysRented());
 }
+
+TEST(rental, getFrequentRenterPoints) {
+    int value = 10;
+    int days = 10;
+    MockCategory category;
+
+    EXPECT_CALL(category, getFrequentRenterPoints)
+            .WillRepeatedly(Return(value));
+
+    MockMovie movie("Title", &category);
+
+    EXPECT_CALL(movie, getFrequentRenterPoints)
+            .Times(AtLeast(2))
+            .WillRepeatedly(Return(category.getFrequentRenterPoints(days)));
+
+    Rental rental(&movie, days);
+
+    EXPECT_EQ(movie.getFrequentRenterPoints(days), rental.getFrequentRenterPoints());
+}
