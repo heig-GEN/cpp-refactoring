@@ -52,3 +52,11 @@ TEST(rental, getFrequentRenterPoints) {
 
     EXPECT_EQ(movie.getFrequentRenterPoints(days), rental.getFrequentRenterPoints());
 }
+
+TEST(rental, getMovieIsCorrect) {
+    Movie movie("This is a unique title, trust me");
+    int days = 10;
+
+    Rental rental(&movie, days);
+    ASSERT_EQ(movie.getTitle(), rental.getMovie().getTitle());
+}
