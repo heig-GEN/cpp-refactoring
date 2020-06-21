@@ -23,3 +23,14 @@ TEST(movies, getPriceIsCorrect) {
     unsigned days = 10;
     EXPECT_EQ(movieA.getPrice(days), category.getPrice(days));
 }
+
+TEST(movies, getFrequentRenterPointsIsCorrect) {
+    MockCategory category;
+
+    EXPECT_CALL(category, getFrequentRenterPoints)
+            .Times(AtLeast(2))
+            .WillRepeatedly(Return(10));
+
+    Movie movie("A", &category);
+    EXPECT_EQ(movie.getFrequentRenterPoints(1), category.getFrequentRenterPoints(1));
+}
