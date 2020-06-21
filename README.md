@@ -1,3 +1,6 @@
-# heig-template-cpp
+# GEN labo 5 - CPP Refactoring
 
-To use this template, click the dedicated button (next to the clone option).
+Authors:
+
+* Alexandre **Piveteau**
+* Guy-Laurent **Subri**
